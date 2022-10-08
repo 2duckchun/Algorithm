@@ -8,13 +8,13 @@ describe('test cReduce', () => {
     }, 8)
     expect(callbacks).toEqual([8, 9, 0, [9]])
   })
-  it('초기값 -3인 채로 배열 내 모든 숫자를 더함. 이때 요소가 짝수일 때 추가로 +1을 더해줌.', () => {
+  it('초기값 -3, 배열 내 모든 숫자를 합함. 요소가 짝수일 때 +1 추가.', () => {
     const cb = (ac, cv, ci) => {
       return ac + cv + (cv % 2 === 0)
     }
     expect([1, 2, 3].cReduce(cb, -3)).toEqual(4)
   })
-  it('배열["one","two","three"]을 reduce 메서드를 이용하여 { one: "1 of 3", two: "2 of 2", three: "3 of 3" }로 만들기', () => {
+  it('배열["one","two","three"]을 객체 { one: "1 of 3", two: "2 of 2", three: "3 of 3" }로 만들기', () => {
     const cb = (ac, cv, ci, ar) => {
       ac[cv] = `${ci + 1} of ${ar.length}`
       return ac
@@ -23,7 +23,7 @@ describe('test cReduce', () => {
     const b = { one: '1 of 3', two: '2 of 3', three: '3 of 3' }
     expect(a.cReduce(cb, {})).toEqual(b)
   })
-  it('배열 ["bob", "obo", "boo"]을 reduce 메서드를 이용해 { bob: true, obo: false, boo: true }로 만들기', () => {
+  it('배열 ["bob", "obo", "boo"]을 객체 { bob: true, obo: false, boo: true }로 만들기', () => {
     const cb = (ac, cv, ci) => {
       ac[cv] = (ci % 2 === 0)
       return ac
