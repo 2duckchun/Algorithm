@@ -41,7 +41,7 @@ describe('test cReduce', () => {
     expect(test.cReduce(cb)).toEqual(10)
   })
 
-  it('문자열로 구성된 배열 ["1", "2", "3"] 를 더해서 "123" 만들기', () => {
+  it('배열 ["1", "2", "3"] 를 더해서 "123" 만들기 wtih 초기값 입력 안한 상태', () => {
     const cb = (ac, cv) => {
       return ac + cv
     }
