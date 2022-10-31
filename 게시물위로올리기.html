@@ -1,0 +1,393 @@
+2duckchun
+#5443
+
+(강사) 이호준 - Licat — 오늘 오전 10:37
+ㅎㅎ
+4. 김현빈 — 오늘 오전 10:37
+let str = ""
+for(let i=1; i<=10000; i++){
+    str += i
+}
+console.log(str.split("").filter(item => item==='8').length)
+4. 백경현 — 오늘 오전 10:37
+ let count = new Array(10000)
+    .fill(0)
+    .map((item, index) => index + 1)
+    .join("")
+    .match(/8/g).length;
+console.log(count);
+4. 이유진 — 오늘 오전 10:40
+let answer = '';
+for (let i = 1; i <= 10000; i++) {
+    answer+=i;
+}
+console.log(answer.split('').filter(item => item === '8').length);
+4. 김설하 — 오늘 오전 10:40
+const answer = Array(10000).fill(0).map((n,index)=> n+index).join("").match(/8/g).length; console.log(answer)
+4. 김세원 — 오늘 오전 10:45
+넵!
+4. 남서연 — 오늘 오전 10:45
+넵
+4. 왕유린 — 오늘 오전 10:45
+넵
+4. 서유림 — 오늘 오전 10:45
+네!
+4. 한유진 — 오늘 오전 10:45
+넵!
+4. 방선아 — 오늘 오전 10:45
+네!
+4. 정수현_2 — 오늘 오전 10:48
+0
+4. 김설하 — 오늘 오전 10:48
+0
+멋쟁이사자처럼 봇
+봇
+ — 오늘 오전 10:50
+쉬는 시간입니다! 10분 뒤 정각에 뵙겠습니다 😉
+이미지
+4. 김세원 — 오늘 오전 10:50
+헉
+4. 한유진 — 오늘 오전 10:50
+벌써..
+4. 정수현_2 — 오늘 오전 10:50
+헉
+4. 최유정 — 오늘 오전 10:50
+헉
+4.  양지성 — 오늘 오전 10:50
+어..
+4. 김설하 — 오늘 오전 10:50
+어 제가 +1을 안햇네요
+어
+:ngr_shk:
+4. 한유진 — 오늘 오전 11:00
+재밌습니다 ㅎ
+4. 서동현 — 오늘 오전 11:00
+재밌어요!
+4. 방선아 — 오늘 오전 11:00
+재미있어용!!
+4. 왕유린 — 오늘 오전 11:00
+알면 재밌는데..ㅎ
+4. 김설하 — 오늘 오전 11:00
+:1admit: ~~
+앗..맞아요
+4. 윤슬기 — 오늘 오전 11:00
+:wow~1:
+4. 한유진 — 오늘 오전 11:02
+앗
+4. 김설하 — 오늘 오전 11:02
+앗
+4. 양희지 — 오늘 오전 11:02
+앗
+4. 방선아 — 오늘 오전 11:02
+앗
+4. 지창언 — 오늘 오전 11:02
+앗
+4.김민정 — 오늘 오전 11:03
+알고리즘 워밍업 문제에 정신이 없네용 ㅋㅋㅋ
+4. 김대운 — 오늘 오전 11:03
+시간절약..
+이미지
+4. 이지운 — 오늘 오전 11:03
+이미지
+:108:
+4. 김설하 — 오늘 오전 11:05
+오,,
+4. 정수현_2 — 오늘 오전 11:05
+오
+4. 서동현 — 오늘 오전 11:06
+오오..
+4. 최수진 — 오늘 오전 11:06
+:wow~1:
+4. 배승연 — 오늘 오전 11:16
+우와
+4. 김세원 — 오늘 오전 11:16
+우와
+4. 방선아 — 오늘 오전 11:16
+우와
+4. 양희지 — 오늘 오전 11:16
+오오오오옹
+4. 김세원 — 오늘 오전 11:16
+저요
+4. 한유진 — 오늘 오전 11:16
+오..
+(강사) 이호준 - Licat — 오늘 오전 11:16
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+확장
+message.txt
+5KB
+4. 정수현_2 — 오늘 오전 11:20
+네
+(강사) 이호준 - Licat — 오늘 오전 11:24
+https://codingdojang.com/scode/408
+코딩도장
+프로그래밍 문제풀이를 통해서 코딩 실력을 수련
+이미지
+4. 한유진 — 오늘 오전 11:24
+네!
+4. 김미경 — 오늘 오전 11:24
+넵
+4. 배승연 — 오늘 오전 11:24
+넵
+4. 양희지 — 오늘 오전 11:24
+넵!
+(강사) 이호준 - Licat — 오늘 오전 11:25
+||
+32분까지 풀어보세요! 🙂
+4. 윤슬기 — 오늘 오전 11:26
+점은 직선위에 위치하고있나요??
+(강사) 이호준 - Licat — 오늘 오전 11:26
+넵! 그렇지만 음수를 고려하신다면 +@ 점수 드립니다.ㅎㅎ
+4. 정수현 — 오늘 오전 11:31
+
+let s = [1,3,4,8,13,17,20]
+let result = '';
+
+let min = s[1]-s[0];
+for (i=0; i<s.length-1; i++){
+    if (s[i+1]-s[i] <min){
+        min = s[i+1]-s[i];
+        result = (${s[i]}, ${s[i+1]});
+    }
+}
+console.log(result);
+4. 김설하 — 오늘 오전 11:31
+ let arr =[];
+for (let i=0; i<S.length-1; i++) {
+    arr.push(S[i+1]-S[i]);
+}
+let idx = Math.min(...arr); 
+console.log(S[idx],S[idx+1]); 
+4. 백경현 — 오늘 오전 11:31
+
+data = [1, 3, 4, 8, 13, 17, 20];
+min_dist = data[1] - data[0];
+    index = 0;
+    for (let i = 0; i < data.length - 1; i++) {
+        let tmp = data[i + 1] - data[i];
+        if (tmp < min_dist) {
+            min_dist = tmp;
+            index = i;
+        }
+    }
+
+    console.log(data[index], data[index + 1]);
+4. 이석우 — 오늘 오전 11:31
+ const S = [1, 3, 4, 8, 13, 17, 20]
+
+const temp = [];
+
+for (i = 0; i < S.length - 1; i++) {
+    temp.push(Math.abs(S[i + 1] - S[i]));
+}
+
+const 최소값 = temp.indexOf(Math.min(...temp));
+console.log(S[최소값], S[최소값 + 1]) 
+(강사) 이호준 - Licat — 오늘 오전 11:31
+이거 답이 아닐겁니다. 🙂 확인 다시 해보세요. 🙂
+4. 지창언 — 오늘 오전 11:32
+ 
+function solution(list){
+  lits = list.sort((a,b)=>a-b)
+  let result = [list[0],list[1]]
+  for(let i=0;i<list.length-1;i++){
+    if(list[i+1]-list[i]<result[1]-result[0]) result = [list[i],list[i+1]]
+  }
+  return result
+}
+console.log(solution([1,3,4,8,13,17,20]))
+ 
+4. 박시우 — 오늘 오전 11:32
+function findNearestPair(S) {
+  let minLength = Infinity;
+  let foundIndex = 0;
+  for (let i = 1; i < S.length; i++ ) {
+      if (minLength > S[i] - S[i - 1]) {
+          minLength = S[i] - S[i - 1];
+          foundIndex = i;
+      }
+  }
+  console.log(S[foundIndex - 1], S[foundIndex]);
+}
+4.  양지성 — 오늘 오전 11:32
+const s = [1,3,4,8,13,17,20];
+const empty = [];
+for(let i=0; i<s.length; i++) {
+    for(let j=i+1; j<s.length; j++) {
+        if(s[j]-s[i] === 1) {
+            empty.push(s[i],s[j]);
+        }
+    }
+}
+
+console.log(empty); 
+4. 김대엽 — 오늘 오전 11:33
+function shortestPair(dots) {
+   let shortest = Infinity;
+    for (let i = 0; i < dots.length; i++) {
+       for (let j = i + 1; j < dots.length; j++) {
+            let gap = Math.abs(dots[i] - dots[j])
+            if (gap < shortest) shortest = gap
+        }
+    }
+    return shortest
+}
+
+console.log(shortestPair([1, 3, 4, 8, 13, 17, 20]))
+넵
+저번에 한꺼번에하니까
+안되길래
+나중에 다시 시도해보겠습니다 감사합니다
+4. 김설하 — 오늘 오전 11:35
+오마나..! 
+4. 백경현 — 오늘 오전 11:35
+우왕
+4. 이준근 — 오늘 오전 11:35
+const arr = [1,3,4,8,13,17,20]
+let minDiff = Infinity;
+let answer = Array(2)
+for(let i = 1; i < arr.length; i++){
+    let diff = Math.abs(arr[i] - arr[i-1])
+    if(minDiff > diff) {
+        minDiff = diff
+        answer = [arr[i-1],arr[i]]
+    }
+}
+console.log(answer)
+4. 양희지 — 오늘 오전 11:36
+오오오오옹
+4. 방선아 — 오늘 오전 11:36
+오와 ㅎㅎ
+﻿
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"
+        />
+        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+        <style>
+            main {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            input {
+                display: block;
+                width: 300px;
+                height: 30px;
+                margin-bottom: 10px;
+            }
+
+            textarea {
+                display: block;
+                width: 300px;
+                height: 300px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                margin-top: 10px;
+                display: block;
+                width: 306px;
+                height: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section>
+                <input type="text" name="" id="title" />
+                <div id="editor"></div>
+                <!-- <textarea name="" id="content" cols="30" rows="10"></textarea> -->
+                <button onclick="saveNote()">메모</button>
+            </section>
+            <section id="display"></section>
+        </main>
+        <script>
+            let allMemo = JSON.parse(localStorage.getItem("allMemo"));
+            allMemo = allMemo ?? [];
+
+            const Editor = toastui.Editor;
+
+            const editor = new Editor({
+                el: document.querySelector("#editor"),
+                height: "600px",
+                initialEditType: "markdown",
+                previewStyle: "vertical",
+            });
+            // editor.getHTML()
+            // editor.getMarkdown()
+
+            render();
+
+            function saveNote() {
+                const title = document.getElementById("title").value;
+                // const content = document.getElementById("content").value;
+                const content = editor.getHTML();
+
+                allMemo.push({ title, content, len: allMemo.length });
+
+                localStorage.setItem("allMemo", JSON.stringify(allMemo));
+                render();
+            }
+
+            function render() {
+                const display = document.getElementById("display");
+                display.innerHTML = "";
+
+                // // 최신 게시물이 위로 올라오도록
+                // for (let i = allMemo.length; i > 0 ; i--) {
+                //     // 아래와 유사 코드
+                // }
+
+                for (const item of allMemo) {
+                    const saveTitle = document.createElement("h2");
+                    const saveContent = document.createElement("div");
+                    const saveId = document.createElement("p");
+                    const deleteMemoBtn = document.createElement("button");
+
+                    saveTitle.textContent = item.title;
+                    saveContent.innerHTML = item.content;
+                    saveId.textContent = item.len + 1;
+                    deleteMemoBtn.textContent = "삭제";
+                    deleteMemoBtn.setAttribute("id", item.len);
+                    deleteMemoBtn.setAttribute("onclick", "remove()");
+
+                    display.appendChild(saveId);
+                    display.appendChild(saveTitle);
+                    display.appendChild(saveContent);
+                    display.appendChild(deleteMemoBtn);
+                }
+            }
+
+            function remove() {
+                // console.log(event.srcElement.id);
+                // console.log(allMemo);
+                const idx = allMemo.find(
+                    (item) => item.len == event.srcElement.id
+                );
+                if (idx) {
+                    allMemo.splice(
+                        allMemo.findIndex((item) => item.len == idx.len),
+                        1
+                    );
+                }
+                localStorage.setItem("allMemo", JSON.stringify(allMemo));
+                render();
+            }
+        </script>
+    </body>
+</html>
+message.txt
+5KB
