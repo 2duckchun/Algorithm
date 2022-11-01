@@ -57,6 +57,7 @@ function same(arr1, arr2) {
     }
     for(let key in frequencyCounter1) {
         // if(!(key ** 2 in frequencyCounter2)) {
+        //     console.log();
         //     return false
         // }
         if(frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
@@ -65,7 +66,6 @@ function same(arr1, arr2) {
     }
     return true
 }
-Time Complexity - O(n)
 
 
 
