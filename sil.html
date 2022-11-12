@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gd</title>
+</head>
+<body>
+    <div id="root">
+    </div>
+    <script>
+        const div = document.querySelector('#root')
+        div.innerHTML = `
+        <div class="container">
+            <h1 class="ir">테스트 페이지</h1>    
+            <section>
+                <h2 class="section-title">섹션제목</h2>
+                <img class="section-img" src="img.jpg" alt="섹션이미지">
+                <p class="section-contents">내용</p>
+            </section>
+        </div>
+        `
+    </script>
+</body>
+</html>
