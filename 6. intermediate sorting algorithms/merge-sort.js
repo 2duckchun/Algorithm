@@ -24,9 +24,6 @@ in each input array
   - if the value in the first array is smaller than the value in the second array, push the value in the first array into our results and move on to the next value in the first array
   - if the value in the first array is larger than the value in the second array, push the value in the second array into our results and move on to the next value in the second array
   - Once we exhaust one array, push in all remaining values from the other array
-
-
-
 */
 
 function merge(arr1, arr2) {
@@ -52,16 +49,13 @@ function merge(arr1, arr2) {
   }
   return results
 }
-
 merge([1, 10, 50], [2, 14, 99, 100])
-
 
 /*
 mergeSort Pseudocode
 * Break up the array into halves until you have arrays that are empty or have one element.
 * Once you have smaller sorted arrays, merge those arrays with other sorted arrays until you are back at the full length of the array
 * Once the array has been merged back together, return the merged (and sorted!) array
-
 */
 
 function mergeSort(arr) {
