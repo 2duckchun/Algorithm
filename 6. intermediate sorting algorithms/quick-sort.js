@@ -41,13 +41,14 @@ Pivot Pseudocode
 */
 
 function pivot(arr, start = 0, end = arr.length + 1) {
+
     function swap(array, i, j) {
         var temp = array[i]
         array[i] = array[j]
         array[j] = temp
     }
-    var median = Math.floor((start + end) / 2)
-    var pivot = arr[median]
+    
+    var pivot = arr[start]
     var swapIdx = start
     for(var i = start + 1; i < arr.length; i++) {
         if (pivot > arr[i]) {
@@ -58,7 +59,8 @@ function pivot(arr, start = 0, end = arr.length + 1) {
     swap(arr, start, swapIdx)
     return swapIdx
 }
-
+// 8
+//[4, 2, 8, 1, 5, 7, 6, 3]
 pivot([4, 8, 2, 1, 5, 7, 6, 3])
 // 3 (인덱스 3)을 리턴함
 
