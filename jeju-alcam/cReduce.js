@@ -17,6 +17,9 @@ Array.prototype.cReduce = function(cb, acc, i = 0) {
 //    'hi5081', 7, 2, original array
 // result will be 'hi508172'
 
+// 최종적으로 acc를 리턴하고
+// acc를 계속 가지고 재귀를 돌아야함
+// 재귀함수는 변하는 파라미터와 종료조건이 들어가있어야 함
 
 allFuns.cReduce = Array.prototype.cReduce
 module.exports = allFuns
