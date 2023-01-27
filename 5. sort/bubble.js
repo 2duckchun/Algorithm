@@ -15,11 +15,31 @@ Return the sorted array
 
 */
 
-function bubbleSort(arr) {
-    let noSwaps
-    for(let i = arr.length; i > 0; i--) {
+// function bubbleSort(arr) {
+//     let noSwaps
+//     for(let i = arr.length; i > 0; i--) {
+//         noSwaps = true
+//         for(let j = 0; j < i - 1; j++) {
+//             if (arr[j] > arr[j + 1]) {
+//                 let temp = arr[j]
+//                 arr[j] = arr[j + 1]
+//                 arr[j + 1] = temp
+//                 noSwaps = false
+//             }
+//         }
+//         if (noSwaps) break
+//     }
+//     return arr
+// }
+
+// 버블정렬
+// 외부 for문은 배열의 끝을 활용하여 끝부터 시작방향으로 루프 설계
+// 내부 for문은 0부터 i까지로 루프 설계
+function DCbubble(arr) {
+    let noSwaps;
+    for (let i = arr.length - 1; i >= 0; i--) {
         noSwaps = true
-        for(let j = 0; j < i - 1; j++) {
+        for (let j = 0; j < i; j++) {
             if (arr[j] > arr[j + 1]) {
                 let temp = arr[j]
                 arr[j] = arr[j + 1]
@@ -32,5 +52,5 @@ function bubbleSort(arr) {
     return arr
 }
 
-const b = bubbleSort([8, 1, 2, 3, 4, 5, 6, 7])
-console.log(b);
+const b = DCbubble([7, 3, 2, 4, 5, 6, 1, 8, 84, 84954, 51621, 1541, 5495424, 1,51611, 6854])
+console.log(b)
