@@ -47,3 +47,37 @@ class Student {
 let firstStudent = new Student("2", "DC", 2)
 firstStudent.fullname()
 ```
+
+## Class Methods
+```js
+class Point {
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
+
+  static distance(a, b) {
+    const dx = a.x - b.x
+    const dy = a.y - b.y
+    console.log(dy, dy)
+    return Math.hypot(dx, dy)
+  }
+}
+
+const p1 = new Point(5, 5)
+const p2 = new Point(10, 10)
+Point.distance(p1, p2)
+```
+- 클래스 메서드는 인스턴스 메서드는 호출할 수 없고, 클래스 차원에서 호출하는 메서드이다.
+- 유틸리티적인 역할을 하는 경우가 많다.
+
+## this
+- inside all of our instance methods and constructor, the keyword `this` refers to
+the object created from that class (also known as an instance)
+
+## Recap
+- Classes are blueprints that when created make objects known as instances
+- Classes are created with the `new` keyword
+- The `constructor` function is a special function that gets run when the class is instantiated
+- Instance methods can be added to classes similar to methods in objects
+- Class methods can be added using the static keyword
