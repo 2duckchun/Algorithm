@@ -1,6 +1,24 @@
-# Singly Linked List(단방향 연결 리스트)
-- 데이터 : val
-- 다음 노드 참조 : next
+# Singly Linked Lists
+## Objectives
+- Define what a Singly Linked List is (싱글 링크드 리스트가 뭔지 정의하기)
+- Compare and contrast Linked Lists with Arrays (어레이와 링크드 리스트의 차이점에 대해 비교하기)
+- Implement insertion, removal, and traversal methods on Singly Linked Lists (삽입, 삭제, 순회 메서드를 싱글 링크드 리스트로 구현해보기)
+
+## What is a linked list?
+- A data structure that contains a `head`, `tail` and `length property` (head와 tail과 length 프로퍼티를 가진 자료구조)
+- Linked Lists consist of nodes, and each node has a value and a pointer to another node or null
+(링크드 리스트는 `노드`와 각 노드에 연결된 `값`, 그리고 다음 노드를 연결하거나 null과 연결되는 `포인터`로 구성된다.)
+
+## Comparisons with Arrays
+### Lists
+- Do not have indexes (인덱스가 없음)
+- Connected via nodes with a next pointer (포인터를 통해 다음 노드로 연결됨)
+- Random access is not allowed (랜덤 엑세스가 허용되지 않음)
+
+### Arrays
+- Indexed in order! (순서대로 인덱싱 되어있음)
+- Insertion and deletion can be expensive (삽입과 삭제 연산이 비쌈)
+- Can quickly be accessed at a specific index (특정 인덱스 값을 통해 빠르게 접근 가능)
 
 ## BigO
 - Insertion(삽입) : 맨 앞이나 맨 뒤에 노드를 추가하는 것은 O(1), 중간 인덱스가 있다고 가정하고 삽입할 경우 O(N)
@@ -222,26 +240,26 @@ class SinglyLinkedList {
     this.length--
     return removeNode
   }
+  
   // reverse 메서드 - 링크드 리스트를 반대로 나열하는 메서드
   /*
   수도코드
-  - Swap the head and tail
-  - Create a variable called next
-  - Create a variable called prev
-  - Create a variable called node and initialize it to the head property
-  - Loop through the list
-  - Set next to be the next property on whatever node is
-  - Set the next property on the node to be whatever prev is
-  - Set prev to be the value of the node variable
-  - Set the node variable to be the value of the next variable
+  - 링크드 리스트의 헤드와 테일을 바꾼다.
+  - 다음 노드를 저장할 변수인 next를 만든다.
+  - 노드의 next에 할당할 노드를 저장할 변수인 prev를 만든다.
+  - node라는 변수를 만들고, 초기 헤드(헤드와 테일을 바꿨다면 바꿨다면 테일)를 할당한다.
+  - 리스트의 길이만큼 루프를 돈다.
+  - 노드 변수의 다음 노드를 next에 저장한다.
+  - 현재 노드의 next를 prev로 할당한다.
+  - prev를 현재 노드로 설정하고
+  - 다음에 쓰일 next 노드를 node에 할당한다.
   */
-
   reverse() {
     let node = this.head
     this.head = this.tail
     this.tail = node
-    let prev = null
     let next = null
+    let prev = null
     for (let i = 0; i < this.length; i++) {
       next = node.next
       node.next = prev
