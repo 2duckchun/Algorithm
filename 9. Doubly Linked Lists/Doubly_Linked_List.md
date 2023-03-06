@@ -49,6 +49,35 @@ class DoublyLinkedList {
     this.length++
     return this
   }
+  
+  /**
+   * Pop 메서드 : 더블 링크드 리스트의 끝 노드를 제거하고, 제거한 노드를 반환하는 메서드
+   * 의사코드
+   * 만약 DLL이 비어있다면? undefined를 리턴한다.
+   * 당장의 tail은 리스트에서 삭제되면서 return될 값이 되므로 따로 변수에 할당해둔다.
+   * tail의 prev가 가장 끝 노드가 될 것이므로 따로 변수에 할당해둔다.
+   * 당장의 tail의 prev 값을 null로 한다.
+   * 따로 변수에 할당된 tail의 prev의 next를 null로 한다.
+   * prev값을 새로운 tail로 할당한다.
+   * 전체 길이를 1 줄여준다.
+   * 만약 길이가 0이 된다면? head와 tail을 모두 비워준다.
+   * 과정이 끝나면 처음에 저장한 tail을 리턴한다.
+  */
+  pop() {
+    if (!this.head) return undefined
+    let lastNode = this.tail
+
+    if (this.length === 1) {
+      this.head = null
+      this.tail = null
+    } else {
+      this.tail = lastNode.prev
+      this.tail.next = null
+      lastNode.prev = null
+    }
+    this.length--
+    return lastNode 
+  }
 }
 
 ```
