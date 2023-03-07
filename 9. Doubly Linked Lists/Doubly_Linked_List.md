@@ -78,6 +78,34 @@ class DoublyLinkedList {
     this.length--
     return lastNode 
   }
+
+  /**
+   * Shift 메서드 : 더블 링크드 리스트의 맨 앞 노드를 제거하고, 제거한 노드를 반환하는 메서드
+   * 의사코드
+   * 만약 DLL이 비어있다면 undefined를 리턴함.
+   * 현재 헤드 프로퍼티를 변수로 저장해놓음, (oldHead로 명명함) (나중에 리턴할 것임)
+   * 만약 length가 1이라면? 헤드와 테일을 null로 설정함.
+   * 그 외의 상황이라면 oldHead의 next 프로퍼티를 head로 설정하고
+   * oldHead의 next를 null로 만들고, 현재 헤드의 prev를 null로 만듦.
+   * length를 1 줄이고
+   * oldHead를 리턴함.
+  */
+  shift() {
+    if (!this.head) {
+      return undefined
+    }
+    let oldHead = this.head
+    if (this.length === 1) {
+      this.head = null
+      this.tail = null
+    } else {
+      this.head = oldHead.next
+      oldHead.next = null
+      this.head.prev = null
+    }
+    this.length--
+    return oldHead
+  }
 }
 
 ```
