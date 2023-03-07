@@ -106,6 +106,28 @@ class DoublyLinkedList {
     this.length--
     return oldHead
   }
+
+  /**
+   * unshift 메서드 : DLL의 맨 앞에 노드를 추가하는 메서드
+   * 의사코드
+   * unshift 메서드는 value를 받고, 그 value로 새로운 node를 생성함.
+   * 만약 DLL에 노드가 없다면? 만들어진 노드를 head와 tail로 설정하고, length를 1 증가시키고 DLL을 return
+   * 노드가 있다면 현재 head의 prev값을 새로운 노드로 하고, 새로운 노드의 next를 현재 head로 함.
+   * head를 새로운 노드로 바꿔주고 length를 1 증가시키고 DLL을 return
+  */
+  unshift(val) {
+    const newNode = new Node(val)
+    if (!this.head) {
+      this.head = newNode
+      this.tail = newNode
+    } else {
+      this.head.prev = newNode
+      newNode.next = this.head
+      this.head = newNode
+    }
+    this.length++
+    return this
+  }
 }
 
 ```
