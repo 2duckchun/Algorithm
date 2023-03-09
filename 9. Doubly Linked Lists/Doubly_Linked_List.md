@@ -128,6 +128,34 @@ class DoublyLinkedList {
     this.length++
     return this
   }
+
+  /**
+   * get 메서드 : 특정위치의 노드를 찾아 반환하는 메서드
+   * 의사코드
+   * 인덱스가 0보다 작거나 length와 같거나 더 크다면? return null
+   * 인덱스가 length의 반보다 작다면? head부터 loop하고 원하는 노드를 찾으면 return
+   * 인덱스가 length의 반보다 크다면? tail부터 loop하고 원하는 노드를 찾으면 return
+  */
+  get(index) {
+    if (index < 0 || index >= this.length) return null
+    let count, current
+    if (index <= this.length / 2) {
+      count = 0
+      current = this.head
+      while(count !== index) {
+        current = current.next
+        count++
+      }  
+    } else {
+      count = this.length - 1
+      current = this.tail
+      while(count !== index) {
+        current = current.prev
+        count--
+      }
+    }
+    return current
+  }
 }
 
 ```
