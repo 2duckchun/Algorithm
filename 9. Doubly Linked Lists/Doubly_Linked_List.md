@@ -172,6 +172,43 @@ class DoublyLinkedList {
     }
     return false
   }
+
+  /**
+   * insert 메서드 : 특정 index에 노드를 추가하는 메서드
+   * 의사코드
+   * 인덱스가 0보다 작거나, length와 같거나 크다면 false 리턴
+   * 인덱스가 0이라면 unshift 실행.
+   * 인덱스가 length와 같다면 push 실행.
+   * 두 상황이 아니라면 get(index - 1 )메서드를 이용해 current를 찾음.
+   * 찾고 prev와 next를 각각 바꿔줌
+   * length를 증가시키고 return true 
+  */
+  insert(index, val) {
+    if(index < 0 || index > this.length) return false
+    if(index === 0) return !!this.unshift(val)
+    if(index === this.length) return !!this.push(val)
+
+    const newNode = new Node(val)
+    const beforeNode = this.get(index - 1)
+    const afterNode = beforeNode.next
+
+    beforeNode.next = newNode
+    newNode.prev = beforeNode
+    newNode.next = afterNode
+    afterNode.prev = newNode
+    this.length++
+    return true
+  }
+
+  print() {
+    const allNodeValue = []
+    let current = this.head
+    while(current) {
+      allNodeValue.push(current.val)
+      current = current.next
+    }
+    console.log(allNodeValue)
+  }
 }
 
 ```
