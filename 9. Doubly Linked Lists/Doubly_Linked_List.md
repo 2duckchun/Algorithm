@@ -176,7 +176,7 @@ class DoublyLinkedList {
   /**
    * insert 메서드 : 특정 index에 노드를 추가하는 메서드
    * 의사코드
-   * 인덱스가 0보다 작거나, length와 같거나 크다면 false 리턴
+   * 인덱스가 0보다 작거나, length보다 크다면 false 리턴
    * 인덱스가 0이라면 unshift 실행.
    * 인덱스가 length와 같다면 push 실행.
    * 두 상황이 아니라면 get(index - 1 )메서드를 이용해 current를 찾음.
@@ -200,6 +200,7 @@ class DoublyLinkedList {
     return true
   }
 
+  // 그냥 DLL 확인하려고 만듬
   print() {
     const allNodeValue = []
     let current = this.head
@@ -208,6 +209,33 @@ class DoublyLinkedList {
       current = current.next
     }
     console.log(allNodeValue)
+  }
+
+  /**
+   * remove 메서드 : 특정 index의 노드를 제거하는 메서드
+   * 의사코드
+   * 인덱스가 0보다 작거나, length보다 크거나 같다면 false 리턴
+   * 인덱스가 0이라면 shift 실행.
+   * 인덱스가 length -1과 같다면 pop 실행.
+   * 두 상황이 아니라면 get(index)메서드를 이용해 current를 찾음.
+   * before와 after를 prev와 next에 각각 할당하고 연결을 잇고 끊어줌
+   * length를 감소시키고 삭제된 노드를 return 
+  */
+  remove(index) {
+    if(index < 0 || index >= this.length) return undefined
+    if(index === 0) return this.shift()
+    if(index === this.length - 1) return this.pop()
+    
+    const currentNode = this.get(index)
+    const beforeNode = currentNode.prev
+    const afterNode = currentNode.next
+    
+    beforeNode.next = afterNode
+    afterNode.prev = beforeNode
+    currentNode.prev = null
+    currentNode.next = null
+    this.length--
+    return currentNode
   }
 }
 
