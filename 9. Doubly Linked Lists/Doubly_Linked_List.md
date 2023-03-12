@@ -156,6 +156,22 @@ class DoublyLinkedList {
     }
     return current
   }
+
+  /**
+   * set 메서드 : 특정 위치의 노드를 찾아 재설정해주는 메서드
+   * 의사코드
+   * value를 받음.
+   * get 메서드가 유효한 node를 리턴하면 그 노드의 value를 바꿈.
+   * true를 리턴함.
+  */
+  set(index, val) {
+    const current = this.get(index)
+    if (current) {
+      current.val = val 
+      return true
+    }
+    return false
+  }
 }
 
 ```
