@@ -1,14 +1,27 @@
 # Doubly Linked Lists
 ## Objectives
-- Construct a Doubly Linked List
-- Compare and contrast Doubly and Singly Linked Lists
-- Implement basic operations on a Doubly Linked List
+- Construct a Doubly Linked List (더블 링크드 링크드 만들기)
+- Compare and contrast Doubly and Singly Linked Lists (싱글 링크드 리스트와 더블 링크드 리스트 비교하기)
+- Implement basic operations on a Doubly Linked List (더블 링크드 리스트의 기본 구현하기)
 
 ## Comparisons with Singly Linked Lists
-- More memory === More Flexibility (it's almost always a tradeoff!)
+- More memory === More Flexibility (it's almost always a tradeoff!) (더블링크드리스트는 싱글링크드리스트보다 메모리 사용량이 많음)
 
-Node (val next prev)
-DoublyLinkedList (head tail length)
+## 구성요소
+- Node (val next prev)
+- DoublyLinkedList (head tail length)
+
+## BigO
+- insertion - O(1)
+- Removal - O(1)
+- Searching - O(N)
+- Access - O(N)
+- Technically searching is O(N / 2) but that's still O(N)
+
+## Recap
+- Doubly Linked Lists are almost identical to Singly Linked Lists except there is an additional pointer to previous nodes
+- Better than Singly Linked Lists for finding nodes and can be done in half the time!
+- However, they do take up more memory considering the extra pointer
 
 ```js
 class Node {
@@ -229,7 +242,7 @@ class DoublyLinkedList {
     const currentNode = this.get(index)
     const beforeNode = currentNode.prev
     const afterNode = currentNode.next
-    
+
     beforeNode.next = afterNode
     afterNode.prev = beforeNode
     currentNode.prev = null
@@ -240,3 +253,7 @@ class DoublyLinkedList {
 }
 
 ```
+
+
+
+
