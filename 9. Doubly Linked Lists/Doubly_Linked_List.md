@@ -1,6 +1,6 @@
 # Doubly Linked Lists
 ## Objectives
-- Construct a Doubly Linked List (더블 링크드 링크드 만들기)
+- Construct a Doubly Linked List (더블 링크드 리스트 설계하기)
 - Compare and contrast Doubly and Singly Linked Lists (싱글 링크드 리스트와 더블 링크드 리스트 비교하기)
 - Implement basic operations on a Doubly Linked List (더블 링크드 리스트의 기본 구현하기)
 
