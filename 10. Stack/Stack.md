@@ -34,3 +34,48 @@ stack.shift()
 // shift, unshift는 스택을 구현하기에는 부적절한 방식이라고 할 수 있음.
 // 하지만 스택에서 굳이 인덱스를 가질 필요성도 없어 배열도 딱히 쓸모있다고 할 수는 없다.
 ```
+
+```js
+// 선입선출과 데이터만 필요할 경우 스택 클래스를 구현할 수 있음
+
+class Node {
+  constructor(val) {
+    this.val = val
+    this.next = null
+  }
+}
+
+class Stack {
+  constructor() {
+    this.first = null
+    this.last = null
+    this.size = 0
+  }
+
+  push(val) {
+    const newNode = new Node(val)
+    if(!this.first) {
+      this.first = newNode
+      this.last = newNode
+    } else {
+      const temp = this.first
+      this.first = newNode
+      this.first.next = temp
+    }
+    return ++this.size
+  }
+
+  pop() {
+    if(!this.first) return null
+
+    const popNode = this.first
+    if(this.first === this.last) {
+      this.last = null
+    }
+    this.first = this.first.next
+    this.size--
+    return popNode
+  }
+}
+
+```
