@@ -6,6 +6,7 @@
 
 ## What is a Stack?
 - A LIFO data structure! : The last element added to the stack will be the first element removed from the stack
+- They are not a built in data structure in JS, but are relatively simple to implement
 
 ## How is it used?
 - Call Stack
@@ -15,6 +16,12 @@
 
 ## JS에서 스택을 구현하기 쉬운 언어는 배열이다.
 ### 그런데 일부 프로그래밍 언어에는 그 자체에 스택이라는 데이터 종류가 있기도 하다.
+
+## BigO
+- Insertion - O(1)
+- Removal - O(1)
+- Searching - O(N)
+- Access - O(N)
 
 ```js
 let stack = []
@@ -68,13 +75,13 @@ class Stack {
   pop() {
     if(!this.first) return null
 
-    const popNode = this.first
+    const temp = this.first
     if(this.first === this.last) {
       this.last = null
     }
     this.first = this.first.next
     this.size--
-    return popNode
+    return temp
   }
 }
 
