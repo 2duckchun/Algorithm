@@ -13,6 +13,7 @@
 - Managing function invocations
 - Undo / Redo
 - Routing (the history object) is treated like a stack!
+- Queues are useful for processing tasks and are foundational for more complex data structures.
 
 ## JS에서 스택을 구현하기 쉬운 언어는 배열이다.
 ### 그런데 일부 프로그래밍 언어에는 그 자체에 스택이라는 데이터 종류가 있기도 하다.
