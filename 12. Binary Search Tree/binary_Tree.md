@@ -36,6 +36,59 @@ class BST {
   constructor() {
     this.root = null
   }
+
+  // insert(value) {
+  //   let newNode = new Node(value)
+  //   if(this.root === null) {
+  //     this.root = newNode
+  //     return this
+  //   } else {
+  //     let current = this.root;
+  //     while(true) {
+  //       if (value === current.value) return undefined
+  //       if (value < current.value) {
+  //         if(current.left === null) {
+  //           current.left = newNode
+  //           return this
+  //         } else {
+  //           current = current.left
+  //         }
+  //       } else if(value > current.value) {
+  //         if(current.right === null) {
+  //           current.right = newNode;
+  //           return this
+  //         } else {
+  //           current = current.right
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  insert(value) {
+    let newNode = new Node(value)
+    if(this.root === null) {
+      this.root = newNode
+      return this
+    }
+    let current = this.root;
+    while(true) {
+      if (value === current.value) return undefined
+      if (value < current.value) {
+        if (current.left === null) {
+          current.left = newNode
+          return this
+        }
+        current = current.left
+      }
+      if (value > current.value) {
+        if(current.right === null) {
+          current.right = newNode
+          return this
+        }
+        current = current.right
+      }
+    }
+  }
 }
 
 class Node {
@@ -53,3 +106,16 @@ tree.root.left = new Node(7)
 tree.root.left.right = new Node(9) ...
 ```
 
+## 노드 추가하기
+- 새 노드 생성
+- 루트에서 시작
+- 루트가 있는지 체크하고, 만약 루트가 없다면 새 노드가 루트가 됨.
+- 루트가 있다면 새 노드가 노드보다 큰 값을 가졌는지, 작은 값을 가졌는지 판단함.
+- 크다면? 
+1. 기준 노드의 오른쪽 노드가 있는지 확인함.
+2. 오른쪽 노드가 있다면, 오른쪽 노드로 이동한 후 이 과정을 반복함.
+3. 오른쪽 노드가 없다면, 새 노드가 오른쪽 노드가 됨.
+- 작다면?
+1. 기준 노드의 왼쪽 노드가 있는지 확인함.
+2. 왼쪽 노드가 있다면, 왼쪽 노드로 이동한 후 이 과정을 반복함.
+3. 왼쪽 노드가 없다면, 새 노드가 왼쪽 노드가 됨.
