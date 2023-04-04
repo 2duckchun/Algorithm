@@ -30,6 +30,12 @@
 - BST는 부모 노드를 기준으로 한 방향은 부모 노드보다 작고 한 방향은 부모 노드보다 크다.
 - 따라서 특정 노드를 찾기 위해 검색의 범위를 절반씩 줄여나갈 수 있다.
 
+## BigO
+- Insertion : O(log n) 
+- Searching : O(log n)
+- 최고와 평균의 경우에는 O(log n)
+- 정말정말 최악의 경우에는 O(N)
+
 ## BST 클래스
 ```js
 class BST {
@@ -37,33 +43,6 @@ class BST {
     this.root = null
   }
 
-  // insert(value) {
-  //   let newNode = new Node(value)
-  //   if(this.root === null) {
-  //     this.root = newNode
-  //     return this
-  //   } else {
-  //     let current = this.root;
-  //     while(true) {
-  //       if (value === current.value) return undefined
-  //       if (value < current.value) {
-  //         if(current.left === null) {
-  //           current.left = newNode
-  //           return this
-  //         } else {
-  //           current = current.left
-  //         }
-  //       } else if(value > current.value) {
-  //         if(current.right === null) {
-  //           current.right = newNode;
-  //           return this
-  //         } else {
-  //           current = current.right
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
   insert(value) {
     let newNode = new Node(value)
     if(this.root === null) {
@@ -89,6 +68,22 @@ class BST {
       }
     }
   }
+
+  find(value) {
+    if (this.root === null) return undefined
+    let current = this.root
+    while(current.value !== value) {
+      if (value < current.value) {
+        if (current.left === null) return undefined
+        current = current.left
+      }
+      if (value > current.value) {
+        if (current.right === null) return undefined
+        current = current.right
+      }
+    }
+    return current
+  }
 }
 
 class Node {
@@ -106,7 +101,7 @@ tree.root.left = new Node(7)
 tree.root.left.right = new Node(9) ...
 ```
 
-## 노드 추가하기
+## insert 메서드
 - 새 노드 생성
 - 루트에서 시작
 - 루트가 있는지 체크하고, 만약 루트가 없다면 새 노드가 루트가 됨.
@@ -119,3 +114,17 @@ tree.root.left.right = new Node(9) ...
 1. 기준 노드의 왼쪽 노드가 있는지 확인함.
 2. 왼쪽 노드가 있다면, 왼쪽 노드로 이동한 후 이 과정을 반복함.
 3. 왼쪽 노드가 없다면, 새 노드가 왼쪽 노드가 됨.
+
+## find 메서드
+- 루트에서 시작
+- 루트가 있는지 체크하고, 없다면 서치는 끝난다.
+- 노드 내 value가 우리가 찾는 값인지 확인해보고, 아니라면 서치는 끝난다.
+- 찾는 값이 아니라면, value가 루트의 value보다 큰지 작은지 비교한다.
+- 크다면?
+1. 기준 노드의 오른쪽에 노드가 있는지 확인한다.
+2. 있다면 오른쪽 노드로 이동하고, 위 과정을 반복한다.
+3. 없다면 서치는 끝난다.
+- 작다면?
+1. 기준 노드의 왼쪽에 노드가 있는지 확인한다.
+2. 있다면 왼쪽 노드로 이동하고, 위 값을 반복한다.
+3. 없다면 서치는 끝난다. 
