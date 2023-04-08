@@ -76,22 +76,46 @@ class BST {
     queue.push(node)
     while(queue.length) {
       node = queue.shift()
-      data.push(node)
+      data.push(node.value)
       if (node.left) queue.push(node.left)
       if (node.right) queue.push(node.right)
     }
     return data
   }
 
-  DFS_Pre() {
+  DFS_PreOrder() {
     const data = []
     const current = this.root
-    const helper = (node) => {
+    const traverse = (node) => {
       data.push(node.value)
-      if (node.left) helper(node.left)
-      if (node.right) helper(node.right)
+      if (node.left) traverse(node.left)
+      if (node.right) traverse(node.right)
     }
-    helper(current)
+    traverse(current)
+    return data
+  }
+
+  DFS_PostOrder() {
+    const data = []
+    const current = this.root
+    const traverse = (node) => {
+      if (node.left) traverse(node.left)
+      if (node.right) traverse(node.right)
+      data.push(node.value)
+    }
+    traverse(current)
+    return data
+  }
+
+  DFS_InOrder() {
+    const data = []
+    const current = this.root
+    const traverse = (node) => {
+      if (node.left) traverse(node.left)
+      data.push(node.value)
+      if (node.right) traverse(node.right)
+    }
+    traverse(current)
     return data
   }
 }
