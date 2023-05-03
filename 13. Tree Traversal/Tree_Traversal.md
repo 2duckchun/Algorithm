@@ -13,13 +13,46 @@
 - 루프가 끝나면(큐에 아무것도 남지 않게 된다면) 방문 노드 배열을 리턴한다.
 
 ## 깊이 우선 탐색 - 전위 탐색 (DFS - PreOrder)
-- 방문한 노드의 값을 저장할 변수를 하나 만든다.
+- 방문한 노드의 값을 저장할 data 변수를 하나 만든다.
 - current라는 변수에 BST의 root를 저장한다.
 - node를 인수로 받는 헬퍼 펑션을 만든다.
-1. 노드의 값을 값을 저장하는 변수에 푸쉬한다.
+1. 노드의 값을 저장하는 변수에 푸쉬한다.
 2. 만약 노드에 왼쪽 프로퍼티가 있으면, 해당 왼쪽 프로퍼티와 함께 헬퍼펑션을 호출한다.
 3. 만약 노드에 오른쪽 프로퍼티가 있다면, 해당 오른쪽 프로퍼티와 함께 헬퍼펑션을 호출한다.
-- 헬퍼 함수를 current 변수에 대해 호출한다.
+- 헬퍼 함수에 current를 인수로 넣고 호출한다.
+
+## 깊이 우선 탐색 - 중위 탐색 (DFS - InOrder)
+- 방문한 노드의 값을 저장할 data 변수를 하나 만든다.
+- current라는 변수에 BST의 root를 저장한다.
+- node를 인수로 받는 헬퍼 펑션을 만든다.
+1. 만약 노드에 왼쪽 프로퍼티가 있으면, 해당 왼쪽 프로퍼티와 함께 헬퍼펑션을 호출한다.
+2. 노드의 값을 data에 푸쉬한다.
+3. 만약 노드에 오른쪽 프로퍼티가 있으면, 해당 오른쪽 프로퍼티와 함께 헬퍼펑션을 호출한다.
+- 헬퍼 함수에 current를 인수로 넣고 호출한다.
+
+## 깊이 우선 탐색 - 후위 탐색 (DFS - PostOrder)
+- 방문한 노드의 값을 저장할 data 변수를 하나 만든다.
+- current라는 변수에 BST의 root를 저장한다.
+- node를 인수로 받는 헬퍼 펑션을 만든다.
+1. 만약 노드에 왼쪽 프로퍼티가 있으면, 해당 왼쪽 프로퍼티와 함께 헬퍼펑션을 호출한다.
+2. 만약 노드에 오른쪽 프로퍼티가 있으면, 해당 오른쪽 프로퍼티와 함께 헬퍼펑션을 호출한다.
+3. 노드의 값을 data에 푸쉬한다.
+- 헬퍼 함수에 current를 인수로 넣고 호출한다.
+
+## DFS, BFS를 언제 쓰면 좋을까요?
+- BFS는 한 층의 depth를 큐에 저장한다.
+- 따라서 넓이가 넓은 트리의 경우, BFS는 공간복잡도를 많이 차지한다.
+- DFS는 어느 한 깊이에 대해 재귀나 스택의 공간복잡도를 차지한다.
+- 따라서 깊이가 깊은 트리의 경우, DFS는 공간복잡도를 많이 차지한다.
+- DFS에는 preorder, inorder, postorder가 있다.
+- 보통은 비슷하게 사용하나, inorder로 순회하면 데이터가 오름차순 정렬되어 출력된다.
+- preorder로 순회하면 데이터는 루트부터 왼쪽, 오른쪽 순으로 정렬되어 출력된다. 따라서 exports 하기 좋은 환경이 된다.
+
+## RECAP
+- 트리는 비선형 데이터 구조이다.
+- 이진 트리는 트리의 특이한 케이스이다. 어떤 종류의 값이든 가질 수 있으나, 부모 노드는 최대 2개의 자식 노드만 가질 수 있다.
+- 이진탐색트리는 이진 트리의 특이한 케이스이다. 부모 노드는 최대 2개의 자식 노드만 가질 수 있고, 부모노드의 왼쪽 프로퍼티는 부모노드보다 작은 값이, 오른쪽 프로퍼티는 부모노드보다 큰 값이 들어가야 한다.
+- 트리를 탐색, 순회하는 알고리즘에는 대표적으로 DFS, BFS가 있다.
 
 ```js
 class BST {
@@ -76,22 +109,46 @@ class BST {
     queue.push(node)
     while(queue.length) {
       node = queue.shift()
-      data.push(node)
+      data.push(node.value)
       if (node.left) queue.push(node.left)
       if (node.right) queue.push(node.right)
     }
     return data
   }
 
-  DFS_Pre() {
+  DFS_PreOrder() {
     const data = []
     const current = this.root
-    const helper = (node) => {
+    const traverse = (node) => {
       data.push(node.value)
-      if (node.left) helper(node.left)
-      if (node.right) helper(node.right)
+      if (node.left) traverse(node.left)
+      if (node.right) traverse(node.right)
     }
-    helper(current)
+    traverse(current)
+    return data
+  }
+
+  DFS_PostOrder() {
+    const data = []
+    const current = this.root
+    const traverse = (node) => {
+      if (node.left) traverse(node.left)
+      if (node.right) traverse(node.right)
+      data.push(node.value)
+    }
+    traverse(current)
+    return data
+  }
+
+  DFS_InOrder() {
+    const data = []
+    const current = this.root
+    const traverse = (node) => {
+      if (node.left) traverse(node.left)
+      data.push(node.value)
+      if (node.right) traverse(node.right)
+    }
+    traverse(current)
     return data
   }
 }
