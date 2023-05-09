@@ -6,10 +6,15 @@ const N = parseInt(input.shift());
 
 function solution(N, input) {
   const page = [];
+  let val = 0;
+
   const paper = (left, bottom) => {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
-        page[i + bottom][j + left] = 1;
+        if (!page[i + bottom][j + left]) {
+          page[i + bottom][j + left] = 1;
+          val += 1;
+        }
       }
     }
   };
@@ -26,28 +31,7 @@ function solution(N, input) {
     paper(left, bottom);
   }
 
-  let val = 0;
-  page.forEach((e) => {
-    e.forEach((e) => {
-      val += e;
-    });
-  });
   console.log(val);
 }
 
 solution(N, input);
-// // paper(3, 7);
-// // paper(15, 7);
-// // paper(5, 2);
-
-// function getPage() {
-//   let val = 0;
-//   page.forEach((e) => {
-//     e.forEach((e) => {
-//       val += e;
-//     });
-//   });
-//   console.log(val);
-// }
-
-// // getPage();
