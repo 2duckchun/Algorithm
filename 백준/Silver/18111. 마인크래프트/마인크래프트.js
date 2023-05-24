@@ -33,6 +33,7 @@ function solution(N, M, B, land) {
   let answer = [Number.MAX_SAFE_INTEGER, 0];
   for (let i = 0; i <= 256; i++) {
     const [time, block] = getTimeAndBlock(i, N, M, B, land);
+    if (block < 0) break;
     if (time <= answer[0] && block >= 0) {
       answer[0] = time;
       answer[1] >= i ? answer[1] : (answer[1] = i);
