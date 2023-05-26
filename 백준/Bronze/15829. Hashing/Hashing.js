@@ -1,14 +1,18 @@
-const fs = require('fs');
-const [n, str] = fs.readFileSync("./dev/stdin").toString().trim().split("\n");
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "text.txt";
+const newLine = process.platform === "linux" ? "\n" : "\r\n";
+const [str] = fs.readFileSync(filePath).toString().trim().split(newLine).slice(1);
 
-const N = +n
-let hash = 0;
-let r = 1;
-for (let i = 0; i < N; i++) {
-  hash += (str.charCodeAt(i) - 96) * r
-  hash %= 1234567891;
-  r *= 31
-  r %= 1234567891;
+function solution(str) {
+  let hash = 0;
+  let r = 1;
+  let mod = 1234567891;
+  for (let char of str) {
+    let code = char.charCodeAt() - 96;
+    hash = (hash + code * r) % mod;
+    r = (r * 31) % mod;
+  }
+  return hash;
 }
 
-console.log(hash)
+console.log(solution(str));
