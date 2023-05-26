@@ -15,12 +15,10 @@ function solution(M, input) {
   let arr = Array(...map);
   arr.sort((a, b) => {
     // 빈도에 따른 정렬
-    if (a[1] < b[1]) return 1;
-    else if (a[1] > b[1]) return -1;
+    if (a[1] !== b[1]) return b[1] - a[1];
 
     // 빈도가 같으면 길이에 따른 정렬
-    if (a[0].length < b[0].length) return 1;
-    else if (a[0].length > b[0].length) return -1;
+    if (a[0].length !== b[0].length) return b[0].length - a[0].length;
 
     // 길이도 같다면 알파벳 순에 따른 정렬
     if (a[0] > b[0]) return 1;
