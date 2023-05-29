@@ -1,49 +1,47 @@
-// !! 홀수 개를 가진 알파벳의 개수가 2개 이상이면 팰린드롬 생성 불가
-// 홀수 개를 가진 알파벳의 개수가 한개이거나 모두 짝수 개를 가진 알파벳의 경우 팰린드롬으로 생성 가능하다.
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "text.txt";
+const newLine = process.platform === "linux" ? "\n" : "\r\n";
+const input = fs.readFileSync(filePath).toString().trim();
 
-const sen = require("fs")
-  .readFileSync(process.platform === "linux" ? "/dev/stdin" : "input.txt")
-  .toString()
-  .trim()
-  .split("");
+/**
+ * 주어진 임의의 문자열로 펠린드롬을 만들어야 한다.
+ * 정답이 여러개인 경우, 사전순으로 펠린드롬을 만들어야 한다.
+ *
+ * 펠린드롬 규칙 : 펠린드롬을 이루는 문자열의 길이가 짝수일 경우, 문자는 모두 짝수개씩 있어야 하며
+ * 펠린드롬을 이루는 문자열의 길이가 홀수일 경우, 문자열을 이루는 한 문자의 길이만 홀수여야 하고 나머지는 짝수여야 함.
+ */
 
-const getPalindrome = (sen) => {
-  // 알파벳별 빈도수 계산
-  let table = new Map();
-  for (const ch of sen) {
-    if (table.has(ch)) table.set(ch, table.get(ch) + 1);
-    else table.set(ch, 1);
-  }
-  // 사전식 정렬
-  table = Object.values([...table]).sort((a, b) => a[0].localeCompare(b[0]));
-
-  // 홀수개의 알파벳 개수와 해당하는 알파벳 체크
-  let oddCnt = 0;
+function solution(input) {
+  let isOdd = input.length % 2 ? true : false;
   let oddChar = "";
-  for (const [key, val] of table) {
-    if (val % 2) {
-      oddCnt++;
-      oddChar = key;
+  let oddCount = 0;
+
+  const map = new Map();
+  for (let char of input) {
+    const charVal = map.get(char);
+    if (charVal) map.set(char, charVal + 1);
+    else map.set(char, 1);
+  }
+
+  for (let mapArr of map.entries()) {
+    if (mapArr[1] % 2 !== 0) {
+      oddCount++;
+      oddChar = mapArr[0];
+    }
+  }
+  if (isOdd && oddCount !== 1) return "I'm Sorry Hansoo";
+  if (!isOdd && oddCount !== 0) return "I'm Sorry Hansoo";
+
+  const charArr = [...map].sort((a, b) => a[0].localeCompare(b[0]));
+  let halfStr = "";
+  for (let char of charArr) {
+    for (let i = 0; i < Math.floor(char[1] / 2); i++) {
+      halfStr += char[0];
     }
   }
 
-  // 홀수개의 알파벳이 두개 이상이면 팰린드롬 생성 불가!
-  if (oddCnt > 1) return "I'm Sorry Hansoo";
+  if (isOdd) return `${halfStr}${oddChar}${halfStr.split("").reverse().join("")}`;
+  else return `${halfStr}${halfStr.split("").reverse().join("")}`;
+}
 
-  // 팰린드롬 생성 과정
-  let firstHalf = "";
-
-  for (let [key, val] of table) {
-    let s = "";
-    for (let i = 0; i < Math.floor(val / 2); i++) {
-      s += key;
-    }
-    firstHalf += s;
-  }
-  const secondHalf = firstHalf.split("").reverse().join("");
-  return oddCnt === 1
-    ? firstHalf + oddChar + secondHalf
-    : firstHalf + secondHalf;
-};
-
-console.log(getPalindrome(sen));
+console.log(solution(input).trim());
