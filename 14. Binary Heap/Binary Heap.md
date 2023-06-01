@@ -34,56 +34,163 @@ class MaxBinaryHeap {
   insert(value) {
     this.values.push(value);
     this.bubbleUp();
-    return this.values;
+  }
+
+  bubbleUp() {
+    let idx = this.values.length - 1;
+    const element = this.values[idx];
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = this.values[parentIdx];
+      if (element <= parent) break;
+      this.values[parentIdx] = element;
+      this.values[idx] = parent;
+      idx = parentIdx;
+    }
   }
 
   extractMax() {
-    let length = this.values.length;
-    if (length <= 2) {
-      return this.values.shift();
-    }
     let max = this.values[0];
     let end = this.values.pop();
-    this.values[0] = end;
-    this.sinkDown();
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.sinkDown();
+    }
     return max;
   }
 
   sinkDown() {
+    let idx = 0;
     let length = this.values.length;
-    let index = 0;
-    let leftIdx = index * 2 + 1;
-    let rightIdx = index * 2 + 2;
-    while (leftIdx < length && rightIdx < length) {
-      let swapIdx;
-      if (this.values[index] > this.values[leftIdx] && this.values[index] > this.values[rightIdx]) break;
-      if (this.values[leftIdx] > this.values[rightIdx]) swapIdx = leftIdx;
-      else swapIdx = rightIdx;
-      let temp = this.values[index];
-      this.values[index] = this.values[swapIdx];
-      this.values[swapIdx] = temp;
-      index = swapIdx;
-      leftIdx = index * 2 + 1;
-      rightIdx = index * 2 + 2;
+    let element = this.values[0];
+    while (true) {
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let leftChild, rightChild;
+      let swap = null;
+
+      if (leftChildIdx < length) {
+        leftChild = this.values[leftChildIdx];
+        if (leftChild > element) {
+          swap = leftChildIdx;
+        }
+      }
+
+      if (rightChildIdx < length) {
+        rightChild = this.values[rightChildIdx];
+        if ((swap === null && rightChild > element) || (swap !== null && rightChild > leftChild)) {
+          swap = rightChildIdx;
+        }
+      }
+      if (swap === null) break;
+      this.values[idx] = this.values[swap];
+      this.values[swap] = element;
+      idx = swap;
     }
-    if (length <= 2) this.values.sort((a, b) => b - a);
-    console.log(this.values);
+  }
+
+  // 이전에 스스로 작성해본 것
+  // sinkDown() {
+  //   let length = this.values.length;
+  //   let index = 0;
+  //   let leftIdx = index * 2 + 1;
+  //   let rightIdx = index * 2 + 2;
+  //   while (leftIdx < length && rightIdx < length) {
+  //     let swapIdx;
+  //     if (this.values[index] > this.values[leftIdx] && this.values[index] > this.values[rightIdx]) break;
+  //     if (this.values[leftIdx] > this.values[rightIdx]) swapIdx = leftIdx;
+  //     else swapIdx = rightIdx;
+  //     let temp = this.values[index];
+  //     this.values[index] = this.values[swapIdx];
+  //     this.values[swapIdx] = temp;
+  //     index = swapIdx;
+  //     leftIdx = index * 2 + 1;
+  //     rightIdx = index * 2 + 2;
+  //   }
+  //   if (length <= 2) this.values.sort((a, b) => b - a);
+  //   console.log(this.values);
+  // }
+
+  // 이전에 스스로 작성해본 것
+  // bubbleUp() {
+  //   let index = this.values.length - 1;
+  //   let parentIndex = Math.floor((index - 1) / 2);
+  //   while (this.values[index] > this.values[parentIndex] && index > 0) {
+  //     let temp = this.values[index];
+  //     this.values[index] = this.values[parentIndex];
+  //     this.values[parentIndex] = temp;
+  //     index = parentIndex;
+  //     parentIndex = Math.floor((index - 1) / 2);
+  //   }
+  // }
+}
+
+class MinBinaryHeap {
+  constructor() {
+    this.values = [];
+  }
+
+  insert(value) {
+    this.values.push(value);
+    this.bubbleUp();
   }
 
   bubbleUp() {
-    let index = this.values.length - 1;
-    let parentIndex = Math.floor((index - 1) / 2);
-    while (this.values[index] > this.values[parentIndex] && index > 0) {
-      let temp = this.values[index];
-      this.values[index] = this.values[parentIndex];
-      this.values[parentIndex] = temp;
-      index = parentIndex;
-      parentIndex = Math.floor((index - 1) / 2);
+    let idx = this.values.length - 1;
+    const element = this.values[idx];
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = this.values[parentIdx];
+      if (element > parent) break;
+      this.values[parentIdx] = element;
+      this.values[idx] = parent;
+      idx = parentIdx;
+    }
+  }
+
+  extractMin() {
+    let max = this.values[0];
+    let end = this.values.pop();
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.sinkDown();
+    }
+    return max;
+  }
+
+  sinkDown() {
+    let idx = 0;
+    let length = this.values.length;
+    let element = this.values[0];
+    while (true) {
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let leftChild, rightChild;
+      let swap = null;
+
+      if (leftChildIdx < length) {
+        leftChild = this.values[leftChildIdx];
+        if (leftChild < element) {
+          swap = leftChildIdx;
+        }
+      }
+
+      if (rightChildIdx < length) {
+        rightChild = this.values[rightChildIdx];
+        if ((swap === null && rightChild < element) || (swap !== null && rightChild < leftChild)) {
+          swap = rightChildIdx;
+        }
+      }
+      if (swap === null) break;
+      this.values[idx] = this.values[swap];
+      this.values[swap] = element;
+      idx = swap;
     }
   }
 }
 
-const b = new MaxBinaryHeap();
+const b = new MinBinaryHeap();
+// const b = new MaxBinaryHeap();
 b.insert(50);
 b.insert(25);
 b.insert(80);
