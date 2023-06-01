@@ -1,18 +1,37 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n')
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "text.txt";
+const newLine = process.platform === "linux" ? "\n" : "\r\n";
 
-function Checkin(Height, Number){
-const H = parseInt(Height)
-let N = parseInt(Number) 
-let W = 0
-while (N > 0) {
-    N -= H
-    W++
-}
-N += H
-console.log(N+"" + (W<10 ? "0" + W : W))
+const input = fs
+  .readFileSync(filePath)
+  .toString()
+  .trim()
+  .split(newLine)
+  .slice(1)
+  .map((el) => el.split(" ").map(Number));
+
+function solution(input) {
+  let answer = "";
+  for (let info of input) {
+    let [H, W, N] = info;
+    let room = "";
+    let floor = 0;
+    let number = 0;
+
+    if (N % H === 0) {
+      floor = H;
+      number = Math.floor(N / H);
+    } else {
+      floor = N % H;
+      number = Math.floor(N / H) + 1;
+    }
+
+    room += `${floor}`;
+    if (number < 10) room += `0${number}`;
+    else room += `${number}`;
+    answer += `${room}\n`;
+  }
+  return answer;
 }
 
-for(i= 1; i <= input[0]; i++){
-    const Case = input[i].split(' ').map(ele=>parseInt(ele));
-    Checkin(Case[0], Case[2])
-}
+console.log(solution(input).trim());
