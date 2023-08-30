@@ -25,3 +25,9 @@ function solution(input) {
 }
 
 console.log(solution(input).trim());
+
+/** 
+ * 조합문제
+ * N <= M이고, N개의 사이트에 모두 다리를 연결해야함. 다리는 중복되는 개념이 아니므로 조합을 사용
+ * nCr = n! / (n - r)! r!
+*/
