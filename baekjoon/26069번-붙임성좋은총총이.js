@@ -7,16 +7,16 @@ const input = fs
   .trim()
   .split(newLine)
   .slice(1)
-  .map((el) => el.split(" ").map(Number));
+  .map((el) => el.split(" "));
 
 function solution(input) {
-  let answer = "";
-  for (let arr of input) {
-    arr.sort((a, b) => a - b);
-    answer += `${arr[arr.length - 3]}\n`;
+  const set = new Set();
+  set.add("ChongChong");
+  for (let meet of input) {
+    if (set.has(meet[0])) set.add(meet[1]);
+    if (set.has(meet[1])) set.add(meet[0]);
   }
-
-  console.log(answer);
+  console.log(set.size);
 }
 
 solution(input);

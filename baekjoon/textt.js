@@ -9,14 +9,19 @@ const input = fs
   .slice(1)
   .map((el) => el.split(" ").map(Number));
 
-function solution(input) {
-  let answer = "";
-  for (let arr of input) {
-    arr.sort((a, b) => a - b);
-    answer += `${arr[arr.length - 3]}\n`;
-  }
-
-  console.log(answer);
+function factorial(n) {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
 }
 
-solution(input);
+function solution(input) {
+  let answer = "";
+  for (let num of input) {
+    const [r, n] = num;
+    const bridge = Math.round(factorial(n) / (factorial(n - r) * factorial(r)));
+    answer += `${bridge}\n`;
+  }
+  return answer;
+}
+
+console.log(solution(input).trim());

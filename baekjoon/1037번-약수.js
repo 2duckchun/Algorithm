@@ -6,17 +6,12 @@ const input = fs
   .toString()
   .trim()
   .split(newLine)
-  .slice(1)
-  .map((el) => el.split(" ").map(Number));
+  .pop()
+  .split(" ")
+  .map(Number)
+  .sort((a, b) => a - b);
 
-function solution(input) {
-  let answer = "";
-  for (let arr of input) {
-    arr.sort((a, b) => a - b);
-    answer += `${arr[arr.length - 3]}\n`;
-  }
+const length = Math.floor(input.length / 2);
 
-  console.log(answer);
-}
-
-solution(input);
+if (input.length % 2 === 0) console.log(input[length] * input[length - 1]);
+else console.log(Math.pow(input[length], 2));
