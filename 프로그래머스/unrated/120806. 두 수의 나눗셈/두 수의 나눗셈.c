@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int solution(int num1, int num2) {
-    double num3 = (double)num1 / num2;
+    int answer = (double)num1 / (double)num2 * 1000; 
     
-    return num3 * 1000;
+    return answer;
 }
