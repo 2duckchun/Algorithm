@@ -11,8 +11,7 @@ function solution(friends, gifts) {
     
     for (const gift of gifts) {
         const [giver, taker] = gift.split(" ")
-        if (obj[giver].toSend[taker] === undefined) obj[giver].toSend[taker] = 0
-        obj[giver].toSend[taker]++
+        obj[giver].toSend[taker] = (obj[giver].toSend[taker] || 0) + 1
         obj[giver].index++
         obj[taker].index--
     }
@@ -35,7 +34,7 @@ function solution(friends, gifts) {
     let maxGift = 0
     
     for (const friend of friends) {
-        maxGift = Math.max(maxGift, obj[friend].willGet)
+        if (maxGift < obj[friend].willGet) maxGift = obj[friend].willGet
     }
     
     return maxGift;
