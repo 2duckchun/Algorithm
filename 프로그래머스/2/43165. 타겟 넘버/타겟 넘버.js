@@ -1,16 +1,17 @@
 function solution(numbers, target) {
-    let count = 0;
-    // 재귀 사용 깊우탐
-    const dfs = (index, sum) => {
+    // BFS
+    let count = 0
+    const queue = [{index: 0, sum: 0}]
+    while (queue.length > 0) {
+        const { index, sum } = queue.pop()
         if (index === numbers.length) {
             if (sum === target) {
                 count++
             }
         } else {
-            dfs(index + 1, sum + numbers[index])
-            dfs(index + 1, sum - numbers[index])
+            queue.push({index: index + 1, sum: sum + numbers[index]})
+            queue.push({index: index + 1, sum: sum - numbers[index]})
         }
     }
-    dfs(0, 0)
     return count
 }
