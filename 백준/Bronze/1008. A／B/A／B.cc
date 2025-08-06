@@ -1,15 +1,9 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 int main()
 {
     double a, b;
-    cin >> a >> b;
-    cout << fixed;
-    cout.precision(9);
-    
-    cout << a / b << endl;
-    
+    scanf("%lf %lf", &a, &b);
+    printf("%0.10lf", a / b);
     return 0;
 }
