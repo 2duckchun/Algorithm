@@ -1,41 +1,47 @@
-KEYPAD = {
-    1: (0, 0), 2: (0, 1), 3: (0, 2),
-    4: (1, 0), 5: (1, 1), 6: (1, 2),
-    7: (2, 0), 8: (2, 1), 9: (2, 2),
-    "*": (3, 0), 0: (3, 1), "#": (3, 2)
-}
+
 
 def solution(numbers, hand):
-    # 손 위치 상태 선언 : 손 위치는 계속 움직인다.
-    left, right = "*", "#"
+    KEYPAD = { n: (((n - 1) // 3), ((n - 1) % 3)) for n in range(1, 10)}
+    KEYPAD["*"] = (3, 0)
+    KEYPAD[0] = (3, 1)
+    KEYPAD["#"] = (3, 2)
+
+    left_thumb = "*"
+    right_thumb = "#"
+    left_numbers = [1, 4, 7]
+    right_numbers = [3, 6, 9]
     answer = []
     
-    # 숫자 순회를 돈다.
     for num in numbers:
-        # 무조건 왼쪽, 무조건 오른쪽을 거른다.
-        if num in (1, 4, 7):
+        if num in left_numbers:
             answer.append("L")
-            left = num # 손가락의 위치 상태 관리는 필수
-        elif num in (3, 6, 9):
+            left_thumb = num
+        elif num in right_numbers:
             answer.append("R")
-            right = num # 손가락의 위치 상태 관리는 필수
+            right_thumb = num
         else:
-            # 2, 5, 8, 0의 경우 거리를 계산한다.
-            # 맨해튼 거리 기준 각각의 행, 열 값을 절대값으로 구한 후 더하면 기준 대비 얼마나 이동해야 하는지 알 수 있다.
-            row, col = KEYPAD[num]
-            left_num = abs(row - KEYPAD[left][0]) + abs(col - KEYPAD[left][1])
-            right_num = abs(row - KEYPAD[right][0]) + abs(col - KEYPAD[right][1])
-            if left_num > right_num: # 오른쪽의 거리가 더 짧으면 오른쪽 손가락 선택
+            # 거리 추출
+            num_row, num_col = KEYPAD[num]
+            left_row, left_col = KEYPAD[left_thumb]
+            right_row, right_col = KEYPAD[right_thumb]
+            
+            # 맨해튼거리
+            left_distance = abs(num_row - left_row) + abs(num_col - left_col)
+            right_distance = abs(num_row - right_row) + abs(num_col - right_col)
+            
+            if left_distance > right_distance:
                 answer.append("R")
-                right = num
-            elif left_num < right_num: # 왼쪽의 거리가 더 짧으면 왼쪽 손가락 선택
-                answer.append("L")
-                left = num
-            elif hand == "right": # 두 거리가 같을 경우, 오른손 잡이는 오른쪽
-                answer.append("R")
-                right = num
-            else: 
-                answer.append("L") # 최종적으로 왼쪽
-                left = num
+                right_thumb = num
                 
+            elif left_distance < right_distance:
+                answer.append("L")
+                left_thumb = num
+                
+            elif hand == "right":
+                answer.append("R")
+                right_thumb = num
+            else:
+                answer.append("L")
+                left_thumb = num
+
     return "".join(answer)
